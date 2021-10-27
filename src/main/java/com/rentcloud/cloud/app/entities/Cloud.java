@@ -21,6 +21,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * @author Yurany Amortegui
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,6 +32,9 @@ import lombok.NoArgsConstructor;
 @Table(name="cloud")
 public class Cloud implements Serializable {
     
+    /**
+     * Generacion de tipo de dato
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -36,14 +43,24 @@ public class Cloud implements Serializable {
     private Integer year;
     private String description;
     
+    /**
+     * Relacion muchas nubes pueden tener una categoria
+     */
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("clouds")
     private Category category;
     
+    /**
+     * Relacion una nube, un cliente, pueden tener muchos mensajes
+     */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cloud")
     @JsonIgnoreProperties({"cloud","client"})
     private List<Message> messages;
+    
+    /**
+     * Relacion una nube puede tener muchas reservaciones
+     */
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cloud")
     @JsonIgnoreProperties({"cloud","messages"})
