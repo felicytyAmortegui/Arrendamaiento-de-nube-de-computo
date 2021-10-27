@@ -78,7 +78,7 @@ public class CloudController {
         * @param cloudId
         * @return 
         */
-       @DeleteMapping("/id")
+       @DeleteMapping("/{id}")
        @ResponseStatus(HttpStatus.NO_CONTENT)
        public boolean delete (@PathVariable("id")  int cloudId){
            return service.delete(cloudId);

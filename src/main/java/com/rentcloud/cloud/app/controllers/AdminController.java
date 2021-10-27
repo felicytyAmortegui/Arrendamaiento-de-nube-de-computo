@@ -79,7 +79,7 @@ public class AdminController {
         * @param adminId
         * @return 
         */
-       @DeleteMapping("/id")
+       @DeleteMapping("/{id}")
        @ResponseStatus(HttpStatus.NO_CONTENT)
 
        public boolean delete (@PathVariable("id")  int adminId){

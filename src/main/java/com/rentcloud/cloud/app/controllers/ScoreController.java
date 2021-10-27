@@ -78,7 +78,7 @@ public class ScoreController {
         * @param scoreId
         * @return 
         */
-       @DeleteMapping("/id")
+       @DeleteMapping("/{id}")
        @ResponseStatus(HttpStatus.NO_CONTENT)
        
        public boolean delete (@PathVariable("id")  int scoreId){
