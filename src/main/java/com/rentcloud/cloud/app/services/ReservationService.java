@@ -110,12 +110,22 @@ public class ReservationService {
         return respuesta;
     }
 
+    /**
+     * Metodo publico para generar el status de las reservaciones.
+     * @return 
+     */
     public StatusReservation getReservationsStatusReport() {
         List<Reservation> completed = repository.getReservationByStatus("completed");
         List<Reservation> cancelled = repository.getReservationByStatus("cancelled");
         return new StatusReservation(completed.size(), cancelled.size());
     }
 
+    /**
+     * Metodo para mostrar la fecha de feservacion.
+     * @param dateA
+     * @param dateB
+     * @return 
+     */
     public List<Reservation> getReservationPeriod(String dateA, String dateB) {
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
         Date aDate = new Date();
@@ -134,7 +144,10 @@ public class ReservationService {
         }
 
     }
-
+/**
+ * Metodo para mostrar la lista top client.
+ * @return 
+ */
     public List<CountClient> getTopClients() {
         return repository.getTopClients();
     }
